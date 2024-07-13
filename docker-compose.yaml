@@ -11,14 +11,12 @@ services:
     environment:
       - USER_UID=1000
       - USER_GID=1000
-    restart: always
+    restart: unless-stopped
     hostname: gitea-server
-    networks:
-      - gitea
     volumes:
       - ./gitea:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     ports:
-      - "3000:3000"
+      - "3080:3000"
       - "222:22"
